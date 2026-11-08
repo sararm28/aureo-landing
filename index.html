@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Descripción que aparece en los navegadores -->
+  <meta name="description" content="Aureo — Joyería femenina de lujo. Collares, aretes y pulseras artesanales.">
+
+  <!-- Título que aparece-->
+  <title>Aureo — Joyería Femenina</title>
+
+  <!--Fuentes-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="Aureo.css">
+</head>
+
+<body>
+  <header id="inicio" class="header">
+
+    <!-- LOGO: texto estilizado que representa la marca -->
+    <div class="header__logo">
+      <!-- <span> permite aplicar un estilo diferente solo a la "A" -->
+      <span class="header__logo-letra">A</span>ureo
+    </div>
+
+    <!-- BOTÓN HAMBURGUESA: solo visible en pantallas pequeñas (móvil)
+         onclick="toggleMenu()" → llama la función JS al hacer clic
+         aria-label → descripción para lectores de pantalla (accesibilidad) -->
+    <button class="header__hamburguesa" onclick="toggleMenu()" aria-label="Abrir menú">
+      <span></span><!-- Línea 1 del ícono hamburguesa -->
+      <span></span><!-- Línea 2 del ícono hamburguesa -->
+      <span></span><!-- Línea 3 del ícono hamburguesa -->
+    </button>
+
+    <!-- MENÚ DE NAVEGACIÓN
+         <nav> es la etiqueta semántica para bloques de navegación
+         id="menu-nav" → JavaScript usa este id para abrir/cerrar el menú -->
+    <nav class="header__nav" id="menu-nav">
+      <!-- href="#id" hace scroll suave hasta la sección con ese id -->
+      <!-- onclick="cerrarMenu()" cierra el menú al tocar un enlace en móvil -->
+      <a href="#inicio"       class="header__nav-link" onclick="cerrarMenu()">Inicio</a>
+      <a href="#colecciones"  class="header__nav-link" onclick="cerrarMenu()">Colecciones</a>
+      <a href="#nosotros"     class="header__nav-link" onclick="cerrarMenu()">Nosotros</a>
+      <a href="#contacto"     class="header__nav-link" onclick="cerrarMenu()">Contacto</a>
+    </nav>
+
+  </header>
+  <!-- FIN HEADER -->
+
+
+
+  <main>
+
+    
+    <section class="hero">
+
+      <!-- Bloque de texto del hero -->
+      <div class="hero__contenido">
+
+        <!-- Texto decorativo pequeño encima del título -->
+        <p class="hero__subtitulo">✦ Colección 2026 ✦</p>
+
+        <!-- h1 = título más importante de toda la página (solo debe haber uno)
+             <br> = salto de línea / <em> = texto en cursiva -->
+        <h1 class="hero__titulo">Elegancia<br><em>Eterna</em></h1>
+
+        <!-- Descripción breve de la marca -->
+        <p class="hero__descripcion">
+          Joyas diseñadas para momentos especiales.<br>
+          Cada pieza cuenta tu historia.
+        </p>
+
+        <!-- Enlace que luce como botón → al hacer clic lleva a #colecciones -->
+        <a href="#colecciones" class="btn btn--primario">Ver Colecciones</a>
+
+      </div>
+
+      <!-- Elemento visual decorativo (no tiene contenido real)
+           aria-hidden="true" → los lectores de pantalla lo ignoran -->
+      <div class="hero__decoracion" aria-hidden="true">
+        <div class="hero__circulo">
+          <div class="hero__circulo-inner"></div>
+        </div>
+        <!-- Partículas decorativas pequeñas -->
+        <span class="hero__particula hero__particula--1">✦</span>
+        <span class="hero__particula hero__particula--2">◇</span>
+        <span class="hero__particula hero__particula--3">✦</span>
+      </div>
+
+    </section>
+    <!-- FIN HERO -->
+
+
+    
+    <section class="colecciones" id="colecciones">
+
+      <!-- Encabezado decorativo de la sección -->
+      <div class="seccion__encabezado">
+        <span class="seccion__etiqueta">— Catálogo —</span>
+        <h2 class="seccion__titulo">Nuestras Colecciones</h2>
+        <p class="seccion__descripcion">Piezas únicas para cada momento especial</p>
+      </div>
+
+      <!-- FILTROS DE CATEGORÍA
+           Cada botón tiene data-filtro con el valor de la categoría.
+           onclick="filtrarProductos('valor')" → JavaScript filtra las cards.
+           El atributo data-* es una forma de guardar información extra en HTML. -->
+      <div class="filtros" id="filtros">
+        <button class="filtros__btn filtros__btn--activo" data-filtro="todos"       onclick="filtrarProductos('todos')">Todos</button>
+        <button class="filtros__btn"                      data-filtro="anillos"     onclick="filtrarProductos('anillos')">Anillos</button>
+        <button class="filtros__btn"                      data-filtro="aretes"      onclick="filtrarProductos('aretes')">Aretes</button>
+        <button class="filtros__btn"                      data-filtro="collares"    onclick="filtrarProductos('collares')">Collares</button>
+        <button class="filtros__btn"                      data-filtro="pulseras"    onclick="filtrarProductos('pulseras')">Pulseras</button>
+        <button class="filtros__btn"                      data-filtro="accesorios"  onclick="filtrarProductos('accesorios')">Accesorios</button>
+      </div>
+
+      <!-- GRID DE TARJETAS
+           id="grid-productos" → JavaScript accede a este contenedor -->
+      <div class="cards" id="grid-productos">
+
+      
+
+        <!-- Tarjeta 1: Anillo -->
+        <article class="card" data-categoria="anillos">
+          <div class="card__imagen-wrapper">
+            <!-- loading="lazy" → carga la imagen solo cuando es visible (más rápido) -->
+            <img src="anillo.png" alt="Anillo dorado elegante" class="card__imagen" loading="lazy">
+            <span class="card__etiqueta">Anillos</span>
+          </div>
+          <div class="card__info">
+            <h3 class="card__nombre">Anillo Clásico</h3>
+            <p class="card__precio">$60.000</p>
+            <!-- onclick="verProducto(nombre, precio)" → muestra info con JS -->
+            <button class="btn btn--tarjeta" onclick="verProducto('Anillo Clásico', '60.000')">Ver más</button>
+          </div>
+        </article>
+
+        <!-- Tarjeta 2: Aretes -->
+        <article class="card" data-categoria="aretes">
+          <div class="card__imagen-wrapper">
+            <img src="are.png" alt="Aretes dorados" class="card__imagen" loading="lazy">
+            <span class="card__etiqueta">Aretes</span>
+          </div>
+          <div class="card__info">
+            <h3 class="card__nombre">Aretes Dorados</h3>
+            <p class="card__precio">$85.000</p>
+            <button class="btn btn--tarjeta" onclick="verProducto('Aretes Dorados', '85.000')">Ver más</button>
+          </div>
+        </article>
+
+        <!-- Tarjeta 3: Collar -->
+        <article class="card" data-categoria="collares">
+          <div class="card__imagen-wrapper">
+            <img src="coll.png" alt="Collar elegante" class="card__imagen" loading="lazy">
+            <span class="card__etiqueta">Collares</span>
+          </div>
+          <div class="card__info">
+            <h3 class="card__nombre">Collar Elegante</h3>
+            <p class="card__precio">$160.000</p>
+            <button class="btn btn--tarjeta" onclick="verProducto('Collar Elegante', '160.000')">Ver más</button>
+          </div>
+        </article>
+
+        <!-- Tarjeta 4: Conjunto collar y aretes -->
+        <article class="card" data-categoria="collares">
+          <div class="card__imagen-wrapper">
+            <img src="conj.png" alt="Conjunto collar y aretes" class="card__imagen" loading="lazy">
+            <!-- Etiqueta especial: clase adicional card__etiqueta--especial cambia su color -->
+            <span class="card__etiqueta card__etiqueta--especial">⭐ Favorito</span>
+          </div>
+          <div class="card__info">
+            <h3 class="card__nombre">Collar y Aretes</h3>
+            <p class="card__precio">$230.000</p>
+            <button class="btn btn--tarjeta" onclick="verProducto('Collar y Aretes', '230.000')">Ver más</button>
+          </div>
+        </article>
+
+        <!-- Tarjeta 5: Pulsera delicada -->
+        <article class="card" data-categoria="pulseras">
+          <div class="card__imagen-wrapper">
+            <img src="hue.png" alt="Pulsera delicada" class="card__imagen" loading="lazy">
+            <span class="card__etiqueta">Pulseras</span>
+          </div>
+          <div class="card__info">
+            <h3 class="card__nombre">Pulsera Delicada</h3>
+            <p class="card__precio">$90.000</p>
+            <button class="btn btn--tarjeta" onclick="verProducto('Pulsera Delicada', '90.000')">Ver más</button>
+          </div>
+        </article>
+
+        <!-- Tarjeta 6: Pulsera eslabones -->
+        <article class="card" data-categoria="pulseras">
+          <div class="card__imagen-wrapper">
+            <img src="maro.png" alt="Pulsera de eslabones" class="card__imagen" loading="lazy">
+            <span class="card__etiqueta">Pulseras</span>
+          </div>
+          <div class="card__info">
+            <h3 class="card__nombre">Pulsera Eslabones</h3>
+            <p class="card__precio">$70.000</p>
+            <button class="btn btn--tarjeta" onclick="verProducto('Pulsera Eslabones', '70.000')">Ver más</button>
+          </div>
+        </article>
+
+        <!-- Tarjeta 7: Pulsera trenzada -->
+        <article class="card" data-categoria="pulseras">
+          <div class="card__imagen-wrapper">
+            <img src="tor.png" alt="Pulsera trenzada" class="card__imagen" loading="lazy">
+            <span class="card__etiqueta">Pulseras</span>
+          </div>
+          <div class="card__info">
+            <h3 class="card__nombre">Pulsera Trenzada</h3>
+            <p class="card__precio">$90.000</p>
+            <button class="btn btn--tarjeta" onclick="verProducto('Pulsera Trenzada', '90.000')">Ver más</button>
+          </div>
+        </article>
+
+        <!-- Tarjeta 8: Accesorio especial -->
+        <article class="card" data-categoria="accesorios">
+          <div class="card__imagen-wrapper">
+            <img src="libr.png" alt="Accesorio especial" class="card__imagen" loading="lazy">
+            <span class="card__etiqueta">Accesorios</span>
+          </div>
+          <div class="card__info">
+            <h3 class="card__nombre">Accesorio Especial</h3>
+            <p class="card__precio">$100.000</p>
+            <button class="btn btn--tarjeta" onclick="verProducto('Accesorio Especial', '100.000')">Ver más</button>
+          </div>
+        </article>
+
+      </div>
+      <!-- FIN CARDS -->
+
+    </section>
+    <!-- FIN COLECCIONES -->
+
+
+
+    <section class="nosotros" id="nosotros">
+
+      <!-- Columna izquierda: elemento visual / decorativo -->
+      <div class="nosotros__visual" aria-hidden="true">
+        <div class="nosotros__marco">
+          <div class="nosotros__marco-inner">
+            <!-- "A" grande decorativa de fondo -->
+            <span class="nosotros__letra-deco">A</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna derecha: texto de la historia -->
+      <div class="nosotros__contenido">
+
+        <span class="seccion__etiqueta">— Nuestra Historia —</span>
+        <h2 class="seccion__titulo nosotros__titulo">Sobre Aureo</h2>
+
+        <!-- Párrafos del texto original, divididos para mejor lectura -->
+        <p class="nosotros__texto">
+          En Aureo, creemos que cada joya tiene un alma, una historia esperando ser contada.
+          Nuestro nombre, que evoca la nobleza y el brillo del oro, refleja nuestro compromiso
+          con la excelencia y la creación de piezas que resuenan contigo.
+        </p>
+        <p class="nosotros__texto">
+          Más allá del valor material, las joyas Aureo son portadoras de emociones, recuerdos
+          y promesas. Descubre cómo una pieza de Aureo puede transformar tu atuendo, marcar
+          una ocasión especial o simplemente recordarte la belleza que reside en ti.
+        </p>
+
+        <!-- ESTADÍSTICAS ANIMADAS
+             Los <span> con id="contador-X" son donde JS escribirá los números.
+             JS los va incrementando de 0 hasta el valor final (efecto animado). -->
+        <div class="nosotros__stats">
+
+          <div class="stat">
+            <span class="stat__numero" id="contador-1">0</span>
+            <span class="stat__label">Piezas únicas</span>
+          </div>
+
+          <div class="stat">
+            <span class="stat__numero" id="contador-2">0</span>
+            <span class="stat__label">Clientas felices</span>
+          </div>
+
+          <div class="stat">
+            <span class="stat__numero" id="contador-3">0</span>
+            <span class="stat__label">Años de experiencia</span>
+          </div>
+
+        </div>
+        <!-- FIN ESTADÍSTICAS -->
+
+      </div>
+      <!-- FIN CONTENIDO NOSOTROS -->
+
+    </section>
+    <!-- FIN NOSOTROS -->
+
+
+
+    <section class="contacto" id="contacto">
+
+      <div class="seccion__encabezado">
+        <span class="seccion__etiqueta">— Escríbenos —</span>
+        <h2 class="seccion__titulo">Contáctanos</h2>
+        <p class="seccion__descripcion">Con gusto te atenderemos</p>
+      </div>
+
+      <!-- Contenedor de dos columnas: info + formulario -->
+      <div class="contacto__contenedor">
+
+        <!-- Columna izquierda: datos de contacto -->
+        <div class="contacto__info">
+
+          <h3 class="contacto__info-titulo">Información</h3>
+
+          <!-- Cada dato tiene un ícono (emoji) + texto -->
+          <div class="contacto__dato">
+            <span class="contacto__icono">✉</span>
+            <span>Aureo@gmail.com</span>
+          </div>
+          <div class="contacto__dato">
+            <span class="contacto__icono">☎</span>
+            <span>313 302 6563</span>
+          </div>
+          <div class="contacto__dato">
+            <span class="contacto__icono">⏰</span>
+            <span>Lunes a Sábado: 9am – 6pm</span>
+          </div>
+          <div class="contacto__dato">
+            <span class="contacto__icono">📍</span>
+            <span>Medellín, Colombia</span>
+          </div>
+
+          <!-- Botones de redes sociales (decorativos) -->
+          <div class="contacto__redes">
+            <span class="red-social">Instagram</span>
+            <span class="red-social">WhatsApp</span>
+          </div>
+
+        </div>
+        <!-- FIN INFO -->
+
+        <!-- Columna derecha: FORMULARIO
+             onsubmit="enviarFormulario(event)" → JS maneja el envío
+             "event" es el objeto del evento → JS lo usa para cancelar
+             el comportamiento por defecto (recargar la página) -->
+        <form class="contacto__form" id="formulario-contacto" onsubmit="enviarFormulario(event)">
+
+          <!-- Campo: Nombre
+               <label> → etiqueta visible del campo (buena práctica)
+               for="nombre" conecta el label con el input id="nombre" -->
+          <div class="form__grupo">
+            <label for="nombre" class="form__label">Tu nombre</label>
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              class="form__input"
+              placeholder="¿Cómo te llamas?"
+              required
+            >
+            <!-- required → HTML valida que no esté vacío antes de enviar -->
+          </div>
+
+          <!-- Campo: Correo electrónico
+               type="email" → el navegador verifica que tenga formato de email -->
+          <div class="form__grupo">
+            <label for="correo" class="form__label">Tu correo</label>
+            <input
+              type="email"
+              id="correo"
+              name="correo"
+              class="form__input"
+              placeholder="correo@ejemplo.com"
+              required
+            >
+          </div>
+
+          <!-- Campo: Asunto (lista desplegable)
+               <select> crea un menú desplegable de opciones
+               Cada <option> es una opción del menú -->
+          <div class="form__grupo">
+            <label for="asunto" class="form__label">Asunto</label>
+            <select id="asunto" name="asunto" class="form__input">
+              <option value="">Selecciona un asunto...</option>
+              <option value="pedido">Hacer un pedido</option>
+              <option value="info">Pedir información</option>
+              <option value="personalizado">Diseño personalizado</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <!-- Campo: Mensaje
+               <textarea> → campo de texto de múltiples líneas
+               rows="4" → cuántas líneas de alto se ve -->
+          <div class="form__grupo">
+            <label for="mensaje" class="form__label">Tu mensaje</label>
+            <textarea
+              id="mensaje"
+              name="mensaje"
+              class="form__input form__textarea"
+              placeholder="Cuéntanos en qué te podemos ayudar..."
+              rows="4"
+              required
+            ></textarea>
+          </div>
+
+          <!-- Botón de envío
+               type="submit" → activa el evento onsubmit del formulario -->
+          <button type="submit" class="btn btn--primario btn--formulario">
+            Enviar Mensaje ✦
+          </button>
+
+          <!-- Div vacío donde JavaScript escribe el mensaje de confirmación
+               Cuando JS usa innerHTML en este div, el texto aparece aquí -->
+          <div id="mensaje-confirmacion" class="form__confirmacion"></div>
+
+        </form>
+        <!-- FIN FORM -->
+
+      </div>
+      <!-- FIN CONTENEDOR -->
+
+    </section>
+    <!-- FIN CONTACTO -->
+
+  </main>
+  <!-- FIN MAIN -->
+
+
+  <footer class="footer">
+
+    <!-- Contenedor principal del footer con 3 columnas -->
+    <div class="footer__grid">
+
+      <!-- Columna 1: Logo + descripción de la marca -->
+      <div class="footer__col">
+        <div class="footer__logo">Aureo</div>
+        <p class="footer__desc">
+          Joyería femenina de lujo. Cada pieza creada con amor
+          y dedicación para celebrar tu belleza única.
+        </p>
+      </div>
+
+      <!-- Columna 2: Links de navegación rápida
+           <ul> = lista sin orden / <li> = ítem de lista -->
+      <div class="footer__col">
+        <h4 class="footer__titulo-col">Navegar</h4>
+        <ul class="footer__lista">
+          <li><a href="#inicio"       class="footer__link">Inicio</a></li>
+          <li><a href="#colecciones"  class="footer__link">Colecciones</a></li>
+          <li><a href="#nosotros"     class="footer__link">Nosotros</a></li>
+          <li><a href="#contacto"     class="footer__link">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 3: Información de contacto -->
+      <div class="footer__col">
+        <h4 class="footer__titulo-col">Contacto</h4>
+        <ul class="footer__lista">
+          <li class="footer__link">Aureo@gmail.com</li>
+          <li class="footer__link">313 302 6563</li>
+          <li class="footer__link">Medellín, Colombia</li>
+        </ul>
+      </div>
+
+    </div>
+    <!-- FIN FOOTER GRID -->
+
+    <!-- Línea divisoria horizontal -->
+    <hr class="footer__linea">
+
+    <!-- Línea de créditos inferior -->
+    <div class="footer__creditos">
+      <p>© 2026 Aureo — Todos los derechos reservados</p>
+      <p>Hecho con ♥ por Sara</p>
+    </div>
+
+  </footer>
+  <!-- FIN FOOTER -->
+
+
+  
+  <script src="script.js"></script>
+
+</body>
+</html>

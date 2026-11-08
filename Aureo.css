@@ -1,0 +1,1089 @@
+
+:root {
+  /* ── PALETA DE COLORES ── */
+  --color-dorado:       #c9a96e;   
+  --color-dorado-claro: #e8cfa0;   
+  --color-dorado-oscuro:#a07840;   
+  --color-rosa:         #f2d4d7;   
+  --color-rosa-medio:   #e8b4bb;  
+  --color-crema:        #fdf6f0;   
+  --color-blanco:       #ffffff;   
+  --color-texto:        #3d2b1f;   
+  --color-texto-suave:  #7a5c4e;   
+  --color-header:       #2b1f1a;   
+
+  /* ── Tipos de fuentes── */
+  --fuente-titulo:  'Cormorant Garamond', Georgia, serif;  
+  --fuente-cuerpo:  'Jost', Arial, sans-serif;             
+
+  /* ── SOMBRAS (De - a +)─── */
+  --sombra-suave:  0 4px 20px rgba(0, 0, 0, 0.06);        
+  --sombra-media:  0 8px 30px rgba(0, 0, 0, 0.12);       
+  --sombra-fuerte: 0 16px 50px rgba(0, 0, 0, 0.18);       
+
+  /* ── BORDES REDONDEADOS ──── */
+  --radio-pequeno:  8px;
+  --radio-medio:    16px;
+  --radio-grande:   30px;
+  --radio-circular: 50%;
+
+  /* ── TRANSICIONES ──── */
+  /* transition: propiedad duracion (- a +)*/
+  --transicion:     all 0.3s ease;   
+  --transicion-lenta: all 0.5s ease; 
+}
+
+* {
+  margin: 0;           /* Elimina márgenes predeterminados */
+  padding: 0;          /* Elimina relleno predeterminado */
+  box-sizing: border-box; /* El padding y borde se incluyen en el ancho total*/
+}
+
+/* Scroll suave al hacer clic en un enlace interno (#ancla)
+   Se aplica al html para que funcione en todos los navegadores */
+html {
+  scroll-behavior: smooth;
+}
+
+/* BODY — Estilos base de toda la página */
+body {
+  font-family: var(--fuente-cuerpo);   
+  background-color: var(--color-crema); 
+  color: var(--color-texto);            
+  font-size: 16px;                      
+  line-height: 1.6;                     
+  overflow-x: hidden;                  
+}
+
+/* Imágenes: evita que se desborden de su contenedor */
+img {
+  max-width: 100%;
+  display: block; /* Elimina el espacio extra que dejan las imágenes inline */
+}
+
+/* Lista: elimina los puntos/números por defecto */
+ul {
+  list-style: none;
+}
+
+/* Enlace: quita el subrayado y la coloración predeterminada */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+
+/* Contenedor del título de cada sección */
+.seccion__encabezado {
+  text-align: center;    /* Centra el texto */
+  margin-bottom: 50px;   /* Espacio abajo antes del contenido */
+}
+
+/* Sobre el titulo */
+.seccion__etiqueta {
+  display: block;               /* Para que ocupe su propia línea */
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.75rem;           /* Texto pequeño (12px) */
+  font-weight: 500;
+  letter-spacing: 3px;          /* Espaciado entre letras */
+  text-transform: uppercase;    /* Todo en mayúsculas */
+  color: var(--color-dorado);
+  margin-bottom: 12px;
+}
+
+/* Título H2 de cada sección */
+.seccion__titulo {
+  font-family: var(--fuente-titulo);  /* Tipografía  serif */
+  font-size: clamp(2rem, 4vw, 3rem);  /* Tamaño fluido: mínimo 2rem, máximo 3rem */
+  font-weight: 400;
+  color: var(--color-texto);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+/* Descripción breve bajo el título */
+.seccion__descripcion {
+  font-size: 0.95rem;
+  color: var(--color-texto-suave);
+  max-width: 500px;               /* Limita el ancho para mejor legibilidad */
+  margin: 0 auto;                 /* Centra horizontalmente */
+}
+
+/* ── BOTONES ──*/
+
+/* Todos los botones */
+.btn {
+  display: inline-block;           /* Se comporta como bloque pero en línea */
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 14px 35px;
+  border-radius: var(--radio-grande);
+  border: none;
+  cursor: pointer;                 /* Cursor de mano al pasar el mouse */
+  transition: var(--transicion);   /* Transición suave en cambios */
+  text-align: center;
+}
+
+/* Botón principal: fondo dorado → para acciones importantes */
+.btn--primario {
+  background-color: var(--color-dorado);
+  color: var(--color-blanco);
+  box-shadow: 0 4px 15px rgba(201, 169, 110, 0.4); /* Sombra dorada */
+}
+
+/* Hover del botón primario: sube un poco  */
+.btn--primario:hover {
+  background-color: var(--color-dorado-oscuro);
+  transform: translateY(-3px);   /* Mueve 3px hacia arriba */
+  box-shadow: 0 8px 25px rgba(201, 169, 110, 0.5);
+}
+
+/* Botón de tarjeta: borde dorado, fondo transparente */
+.btn--tarjeta {
+  background: transparent;
+  color: var(--color-dorado);
+  border: 1.5px solid var(--color-dorado);
+  padding: 9px 22px;
+  font-size: 0.72rem;
+  border-radius: var(--radio-grande);
+}
+
+/* Hover del botón tarjeta: se rellena de dorado */
+.btn--tarjeta:hover {
+  background-color: var(--color-dorado);
+  color: var(--color-blanco);
+  transform: translateY(-2px);
+}
+
+/* Modificador para el botón del formulario: ocupa todo el ancho */
+.btn--formulario {
+  width: 100%;
+  padding: 16px;
+  font-size: 0.85rem;
+}
+
+
+
+.header {
+  position: fixed;               /* Fijo respecto a la ventana del navegador */
+  top: 0;                        /* Pegado arriba */
+  left: 0;
+  width: 100%;                   /* Ocupa todo el ancho */
+  z-index: 1000;                 /* Capa 1000: por encima de todo */
+
+  /* Flexbox: coloca logo y menú en una fila, separados en los extremos */
+  display: flex;
+  justify-content: space-between; /* Logo a la izquierda, menú a la derecha */
+  align-items: center;            /* Alineados verticalmente al centro */
+
+  padding: 20px 60px;             /* Relleno interno: 20px vertical, 60px horizontal */
+  background-color: var(--color-header);
+
+  /* Transición para cuando el fondo cambia con JS al hacer scroll */
+  transition: var(--transicion);
+}
+
+/* Clase que JS agrega cuando el usuario hace scroll hacia abajo */
+.header--scrolled {
+  padding: 14px 60px;            /* Se vuelve más compacto */
+  background-color: rgba(43, 31, 26, 0.97);
+  box-shadow: var(--sombra-media);
+}
+
+/* LOGO */
+.header__logo {
+  font-family: var(--fuente-titulo);
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--color-blanco);
+  letter-spacing: 4px;
+}
+
+/* La letra "A" del logo tiene el color dorado */
+.header__logo-letra {
+  color: var(--color-dorado);
+  font-weight: 600;
+}
+
+/* MENÚ DE NAVEGACIÓN — los links dentro del <nav> */
+.header__nav {
+  display: flex;           /* Links en fila horizontal */
+  gap: 40px;               /* Espacio entre cada link */
+}
+
+/* Cada enlace del menú */
+.header__nav-link {
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  transition: var(--transicion);
+  position: relative;       /* Necesario para el subrayado animado (::after) */
+}
+
+/* Efecto hover: texto más brillante + subrayado que crece */
+.header__nav-link:hover {
+  color: var(--color-dorado-claro);
+}
+
+/*Está invisible por defecto (width: 0) y crece con el hover */
+.header__nav-link::after {
+  content: '';                          /* Pseudo-elemento vacío (solo visual) */
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;                            /* Empieza sin ancho */
+  height: 1px;
+  background-color: var(--color-dorado);
+  transition: width 0.3s ease;         /* Solo anima el ancho */
+}
+
+/* Al pasar el mouse, el subrayado crece hasta el 100% */
+.header__nav-link:hover::after {
+  width: 100%;
+}
+
+/* BOTÓN HAMBURGUESA (menú móvil) — oculto en escritorio */
+.header__hamburguesa {
+  display: none;          /* No se muestra en pantallas grandes */
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+/* Las 3 líneas del ícono hamburguesa */
+.header__hamburguesa span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-blanco);
+  transition: var(--transicion);
+  border-radius: 2px;
+}
+
+
+.hero {
+  min-height: 100vh;              /* Ocupa el 100% del alto del viewport (ventana) */
+  padding-top: 80px;              /* Espacio para que el header fijo no tape el contenido */
+  padding-left: 60px;
+  padding-right: 60px;
+
+  /* Fondo con gradiente diagonal de rosa a crema */
+  background: linear-gradient(135deg, #fdf0ec 0%, #f8e8e0 40%, var(--color-crema) 100%);
+
+  /* Flexbox para colocar texto y decoración lado a lado */
+  display: flex;
+  align-items: center;            /* Centrado vertical */
+  justify-content: space-between; /* Texto a la izquierda, decoración a la derecha */
+  gap: 40px;
+  position: relative;
+  overflow: hidden;               /* Oculta elementos decorativos que se salen */
+}
+
+/* CONTENIDO DEL HERO (lado izquierdo con el texto) */
+.hero__contenido {
+  max-width: 560px;               /* Limita el ancho del bloque de texto */
+  animation: fadeInLeft 1s ease;  /* Animación de entrada: viene desde la izquierda */
+}
+
+/* Pequeño texto decorativo encima del título */
+.hero__subtitulo {
+  font-size: 0.75rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--color-dorado);
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+/* Título principal del hero */
+.hero__titulo {
+  font-family: var(--fuente-titulo);
+  /* clamp(mínimo, preferido, máximo) → tamaño fluido que se adapta */
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--color-texto);
+  margin-bottom: 24px;
+}
+
+/* La palabra en cursiva dentro del título */
+.hero__titulo em {
+  font-style: italic;
+  color: var(--color-dorado);
+}
+
+/* Párrafo descriptivo del hero */
+.hero__descripcion {
+  font-size: 1rem;
+  color: var(--color-texto-suave);
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+/* DECORACIÓN DEL HERO (lado derecho) */
+.hero__decoracion {
+  position: relative;
+  width: 420px;
+  height: 420px;
+  flex-shrink: 0;                 /* No se encoge con el flexbox */
+  animation: fadeInRight 1s ease; /* Entrada desde la derecha */
+}
+
+/* Círculo principal decorativo */
+.hero__circulo {
+  width: 380px;
+  height: 380px;
+  border-radius: var(--radio-circular);
+  border: 1.5px solid var(--color-dorado-claro);
+
+  /* Gradiente de fondo del círculo */
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(232, 207, 160, 0.2) 0%,
+    rgba(242, 212, 215, 0.3) 50%,
+    transparent 70%
+  );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: rotar 20s linear infinite; /* Gira lentamente, infinito */
+}
+
+/* Círculo interno */
+.hero__circulo-inner {
+  width: 280px;
+  height: 280px;
+  border-radius: var(--radio-circular);
+  border: 1px dashed rgba(201, 169, 110, 0.4);
+  background: radial-gradient(
+    circle,
+    rgba(201, 169, 110, 0.15) 0%,
+    transparent 70%
+  );
+}
+
+/* Partículas flotantes decorativas */
+.hero__particula {
+  position: absolute;
+  color: var(--color-dorado);
+  font-size: 1.2rem;
+  animation: flotar 3s ease-in-out infinite;
+}
+
+.hero__particula--1 { top: 10%;  left: 10%; animation-delay: 0s; }
+.hero__particula--2 { top: 70%;  right: 10%; animation-delay: 1s; font-size: 0.8rem; }
+.hero__particula--3 { bottom: 15%; left: 30%; animation-delay: 2s; font-size: 0.6rem; }
+
+
+.colecciones {
+  padding: 100px 60px;
+  background-color: var(--color-blanco);
+}
+
+
+
+.filtros {
+  display: flex;           /* Botones en fila */
+  flex-wrap: wrap;         /* Si no caben, pasan a la siguiente línea */
+  justify-content: center; /* Centrados horizontalmente */
+  gap: 10px;               /* Espacio entre botones */
+  margin-bottom: 50px;
+}
+
+/* Cada botón de filtro */
+.filtros__btn {
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 10px 24px;
+  border-radius: var(--radio-grande);
+  border: 1.5px solid var(--color-dorado-claro);
+  background: transparent;
+  color: var(--color-texto-suave);
+  cursor: pointer;
+  transition: var(--transicion);
+}
+
+/* Hover del botón de filtro */
+.filtros__btn:hover {
+  border-color: var(--color-dorado);
+  color: var(--color-dorado);
+}
+
+/* Clase activa: botón seleccionado actualmente
+   JS agrega/quita esta clase al hacer clic en un filtro */
+.filtros__btn--activo {
+  background-color: var(--color-dorado);
+  border-color: var(--color-dorado);
+  color: var(--color-blanco);
+}
+
+
+
+══════════════════════════════════════════════════════════════════ */
+.cards {
+  display: grid;
+  /* auto-fill: llena el espacio con columnas de min 250px / max 1fr */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 28px;       /* Espacio entre tarjetas (horizontal y vertical) */
+}
+
+/* TARJETA INDIVIDUAL */
+.card {
+  background: var(--color-blanco);
+  border-radius: var(--radio-medio);
+  overflow: hidden;               /* El contenido no se sale del borde redondeado */
+  box-shadow: var(--sombra-suave);
+  transition: var(--transicion);  /* Transición suave para el hover */
+  border: 1px solid rgba(232, 207, 160, 0.2);
+}
+
+/* Efecto hover: la tarjeta sube y su sombra crece */
+.card:hover {
+  transform: translateY(-8px);    /* Sube 8px */
+  box-shadow: var(--sombra-fuerte);
+}
+
+/* Contenedor de la imagen — position relative para la etiqueta encima */
+.card__imagen-wrapper {
+  position: relative;       /* Necesario para posicionar la etiqueta (.card__etiqueta) */
+  overflow: hidden;
+  height: 220px;
+}
+
+/* Imagen del producto */
+.card__imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* Recorta la imagen para llenar el espacio sin distorsionar */
+  transition: transform 0.5s ease; /* Transición de la imagen al hacer hover */
+}
+
+/* Al hacer hover en la tarjeta, la imagen hace un zoom suave */
+.card:hover .card__imagen {
+  transform: scale(1.06);   /* Zoom de 6% */
+}
+
+/* Etiqueta de categoría (sobre la imagen) */
+.card__etiqueta {
+  position: absolute;      /* Se posiciona dentro de .card__imagen-wrapper */
+  top: 14px;
+  left: 14px;
+  background: rgba(43, 31, 26, 0.75);
+  color: var(--color-dorado-claro);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: var(--radio-grande);
+
+  /* Efecto de cristal esmerilado (blur) */
+  backdrop-filter: blur(4px);
+}
+
+/* Variante especial de la etiqueta (para el producto "Favorito") */
+.card__etiqueta--especial {
+  background: rgba(201, 169, 110, 0.9);
+  color: var(--color-blanco);
+}
+
+/* Información de la tarjeta (nombre, precio, botón) */
+.card__info {
+  padding: 20px 22px 24px;
+  display: flex;
+  flex-direction: column;   /* Apila los elementos verticalmente */
+  gap: 10px;
+}
+
+/* Nombre del producto */
+.card__nombre {
+  font-family: var(--fuente-titulo);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--color-texto);
+}
+
+/* Precio del producto */
+.card__precio {
+  font-size: 0.9rem;
+  color: var(--color-dorado);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Clase para ocultar tarjetas con el filtro (JS agrega/quita esta clase) */
+.card--oculta {
+  display: none; /* La tarjeta desaparece del flujo */
+}
+
+
+
+.nosotros {
+  padding: 100px 60px;
+  background: linear-gradient(135deg, var(--color-crema) 0%, var(--color-rosa) 100%);
+
+  /* Flexbox: dos columnas lado a lado */
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+/* Columna visual (izquierda) — decorativa */
+.nosotros__visual {
+  flex-shrink: 0;      /* No se encoge */
+  width: 320px;
+  height: 380px;
+}
+
+/* Marco decorativo */
+.nosotros__marco {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radio-medio);
+  background: linear-gradient(135deg, var(--color-dorado-claro), var(--color-rosa-medio));
+  padding: 20px;
+  box-shadow: var(--sombra-media);
+  position: relative;
+}
+
+/* Marco interior */
+.nosotros__marco-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radio-pequeno);
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Letra "A" gigante decorativa de fondo */
+.nosotros__letra-deco {
+  font-family: var(--fuente-titulo);
+  font-size: 12rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1;
+  user-select: none;      /* No se puede seleccionar con el mouse */
+}
+
+/* Columna de contenido (derecha) — texto */
+.nosotros__contenido {
+  flex: 1;    /* Ocupa todo el espacio disponible restante */
+}
+
+.nosotros__titulo {
+  text-align: left;   /* Este título va alineado a la izquierda (no centrado) */
+}
+
+/* Párrafos de la historia */
+.nosotros__texto {
+  font-size: 0.95rem;
+  line-height: 1.9;
+  color: var(--color-texto-suave);
+  margin-bottom: 18px;
+}
+
+/* ESTADÍSTICAS — Los tres números animados */
+.nosotros__stats {
+  display: flex;      /* Los 3 stats en fila */
+  gap: 40px;
+  margin-top: 40px;
+  padding-top: 36px;
+  border-top: 1px solid rgba(201, 169, 110, 0.3); /* Línea divisoria sutil */
+}
+
+/* Cada bloque estadístico */
+.stat {
+  display: flex;
+  flex-direction: column; /* Número arriba, etiqueta abajo */
+  gap: 4px;
+}
+
+/* El número grande animado */
+.stat__numero {
+  font-family: var(--fuente-titulo);
+  font-size: 2.4rem;
+  font-weight: 300;
+  color: var(--color-dorado);
+  line-height: 1;
+}
+
+/* La etiqueta descriptiva bajo el número */
+.stat__label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-texto-suave);
+}
+
+
+
+.contacto {
+  padding: 100px 60px;
+  background-color: var(--color-blanco);
+}
+
+/* Contenedor de dos columnas */
+.contacto__contenedor {
+  display: flex;
+  gap: 60px;
+  max-width: 1000px;       /* Limita el ancho máximo del bloque */
+  margin: 0 auto;          /* Centra el bloque horizontalmente */
+  align-items: flex-start; /* Las columnas se alinean desde arriba */
+}
+
+/* Columna de información (izquierda) */
+.contacto__info {
+  flex: 1;
+  background: linear-gradient(135deg, var(--color-texto) 0%, #5a3c2e 100%);
+  border-radius: var(--radio-medio);
+  padding: 48px 40px;
+  color: var(--color-blanco);
+}
+
+/* Título de la columna de información */
+.contacto__info-titulo {
+  font-family: var(--fuente-titulo);
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--color-blanco);
+  margin-bottom: 32px;
+}
+
+/* Cada dato de contacto (ícono + texto) */
+.contacto__dato {
+  display: flex;          /* Ícono y texto en fila */
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Ícono/emoji de cada dato */
+.contacto__icono {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radio-circular);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+/* Botones de redes sociales */
+.contacto__redes {
+  display: flex;
+  gap: 12px;
+  margin-top: 36px;
+}
+
+.red-social {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 9px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radio-grande);
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: var(--transicion);
+}
+
+.red-social:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-blanco);
+}
+
+/* FORMULARIO (columna derecha) */
+.contacto__form {
+  flex: 1.2;               /* Más ancho que la columna de info */
+  display: flex;
+  flex-direction: column;  /* Campos apilados verticalmente */
+  gap: 20px;
+}
+
+/* Cada grupo: label + input */
+.form__grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;               /* Espacio entre el label y el input */
+}
+
+/* Etiqueta del campo */
+.form__label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-texto-suave);
+}
+
+/* Estilos base de inputs, textarea y select */
+.form__input {
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.9rem;
+  padding: 14px 18px;
+  border: 1.5px solid rgba(201, 169, 110, 0.3);
+  border-radius: var(--radio-pequeno);
+  background: var(--color-crema);
+  color: var(--color-texto);
+  transition: var(--transicion);
+  outline: none;             /* Quita el contorno azul por defecto */
+  width: 100%;
+}
+
+/* Cuando el usuario hace clic en el campo (estado :focus) */
+.form__input:focus {
+  border-color: var(--color-dorado);
+  background: var(--color-blanco);
+  box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.15);
+}
+
+/* Textarea: altura fija y que no se pueda redimensionar horizontalmente */
+.form__textarea {
+  resize: vertical;   /* Solo se puede redimensionar verticalmente */
+  min-height: 120px;
+}
+
+/* Mensaje de confirmación (JavaScript lo rellena al enviar) */
+.form__confirmacion {
+  font-size: 0.9rem;
+  padding: 0;
+  border-radius: var(--radio-pequeno);
+  text-align: center;
+  transition: var(--transicion);
+}
+
+/* Clase de éxito que JS agrega al confirmar el envío */
+.form__confirmacion--exito {
+  background: rgba(201, 169, 110, 0.1);
+  border: 1px solid var(--color-dorado);
+  color: var(--color-dorado-oscuro);
+  padding: 16px;
+}
+
+
+.footer {
+  background-color: var(--color-header);
+  padding: 70px 60px 30px;
+}
+
+/* Grid de 3 columnas para el footer */
+.footer__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;  /* Primera columna más ancha */
+  gap: 50px;
+  margin-bottom: 50px;
+}
+
+/* Logo del footer */
+.footer__logo {
+  font-family: var(--fuente-titulo);
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--color-dorado-claro);
+  letter-spacing: 4px;
+  margin-bottom: 16px;
+}
+
+/* Descripción bajo el logo */
+.footer__desc {
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 280px;
+}
+
+/* Título de cada columna del footer */
+.footer__titulo-col {
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--color-dorado-claro);
+  margin-bottom: 22px;
+}
+
+/* Lista de links del footer */
+.footer__lista {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Cada link del footer */
+.footer__link {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  transition: var(--transicion);
+  cursor: pointer;
+}
+
+/* Hover en links del footer */
+.footer__link:hover {
+  color: var(--color-dorado-claro);
+}
+
+/* Línea divisoria del footer */
+.footer__linea {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 24px;
+}
+
+/* Créditos finales */
+.footer__creditos {
+  display: flex;
+  justify-content: space-between;  /* Texto en los dos extremos */
+  align-items: center;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+
+
+/* Entrada desde la izquierda + aparición gradual */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;                  /* Empieza invisible */
+    transform: translateX(-40px); /* Empieza 40px a la izquierda */
+  }
+  to {
+    opacity: 1;                  /* Termina visible */
+    transform: translateX(0);    /* Termina en su posición normal */
+  }
+}
+
+/* Entrada desde la derecha + aparición gradual */
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);  /* Empieza 40px a la derecha */
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Aparición desde abajo */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);  /* Empieza 30px abajo */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Rotación continua (para el círculo del hero) */
+@keyframes rotar {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Efecto de flotación suave arriba y abajo (para las partículas) */
+@keyframes flotar {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-12px); }
+}
+
+/* Animación de las cards al aparecer en pantalla (activada por JS) */
+.card--visible {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+
+/* ── TABLET (pantallas hasta 900px) ────────────────────────── */
+@media (max-width: 900px) {
+
+  /* Header: menos padding lateral en tablet */
+  .header {
+    padding: 18px 30px;
+  }
+  .header--scrolled {
+    padding: 12px 30px;
+  }
+
+  /* Hero: todo en columna (texto arriba, decoración abajo) */
+  .hero {
+    flex-direction: column;      /* Cambia de fila a columna */
+    text-align: center;
+    padding: 120px 30px 80px;
+    min-height: auto;
+  }
+
+  /* La decoración se hace más pequeña en tablet */
+  .hero__decoracion {
+    width: 260px;
+    height: 260px;
+  }
+  .hero__circulo {
+    width: 240px;
+    height: 240px;
+  }
+  .hero__circulo-inner {
+    width: 160px;
+    height: 160px;
+  }
+
+  /* Colecciones: menos padding */
+  .colecciones {
+    padding: 80px 30px;
+  }
+
+  /* Nosotros: cambia a columna en tablet */
+  .nosotros {
+    flex-direction: column;
+    padding: 80px 30px;
+    gap: 50px;
+  }
+  .nosotros__visual {
+    width: 100%;
+    height: 200px;
+  }
+  .nosotros__titulo {
+    text-align: center;
+  }
+  .nosotros__stats {
+    justify-content: center;
+  }
+
+  /* Contacto: una columna */
+  .contacto {
+    padding: 80px 30px;
+  }
+  .contacto__contenedor {
+    flex-direction: column;
+  }
+
+  /* Footer: dos columnas */
+  .footer {
+    padding: 60px 30px 24px;
+  }
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;  /* 2 columnas en tablet */
+  }
+  .footer__creditos {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}
+
+/* ── MÓVIL (pantallas hasta 600px) ─────────────────────────── */
+@media (max-width: 600px) {
+
+  /* ─ HEADER MÓVIL ─────────────────────────── */
+  .header {
+    padding: 16px 20px;
+  }
+
+  /* Menú: se oculta por defecto en móvil */
+  .header__nav {
+    display: none;           /* Oculto inicialmente */
+    position: fixed;         /* Posición fija sobre la pantalla */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;           /* Ocupa toda la altura de la pantalla */
+    background: rgba(43, 31, 26, 0.98);
+    flex-direction: column;  /* Links en columna */
+    align-items: center;
+    justify-content: center;
+    gap: 36px;
+    z-index: 999;
+  }
+
+  /* Links del menú móvil más grandes */
+  .header__nav-link {
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  /* Clase que JS agrega para mostrar el menú móvil */
+  .header__nav--abierto {
+    display: flex;   /* Cambia a flex para mostrarlo */
+  }
+
+  /* Se muestra el botón hamburguesa en móvil */
+  .header__hamburguesa {
+    display: flex;
+    z-index: 1001;   /* Por encima del menú para poder cerrarlo */
+  }
+
+  /* ─ HERO MÓVIL ───────────────────────────── */
+  .hero {
+    padding: 110px 20px 70px;
+  }
+  .hero__decoracion {
+    display: none; /* La decoración se oculta en móvil para ahorrar espacio */
+  }
+
+  /* ─ COLECCIONES MÓVIL ────────────────────── */
+  .colecciones {
+    padding: 70px 20px;
+  }
+
+  /* Grid de 1 o 2 columnas en móvil según el ancho */
+  .cards {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+  }
+
+  /* Imagen más pequeña en móvil */
+  .card__imagen-wrapper {
+    height: 160px;
+  }
+
+  /* ─ NOSOTROS MÓVIL ───────────────────────── */
+  .nosotros {
+    padding: 70px 20px;
+  }
+  .nosotros__visual {
+    display: none; /* Oculta el visual decorativo en móvil */
+  }
+  .nosotros__stats {
+    flex-direction: column;  /* Las stats en columna */
+    gap: 24px;
+  }
+
+  /* ─ CONTACTO MÓVIL── */
+  .contacto {
+    padding: 70px 20px;
+  }
+
+  /* ─ FOOTER MÓVIL ── */
+  .footer {
+    padding: 50px 20px 20px;
+  }
+  .footer__grid {
+    grid-template-columns: 1fr;  /* Una sola columna en móvil */
+    gap: 36px;
+  }
+}
